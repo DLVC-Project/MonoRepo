@@ -14,9 +14,10 @@
         <div>Ho Valavor v{{ version }}</div>
       </q-toolbar>
       <q-tabs align="left">
-        <q-route-tab to="/page1" label="Abenteuer" />
-        <q-route-tab to="/page2" label="Kampf" />
-        <q-route-tab to="/page3" label="Händler" />
+        <!-- TODO: router erweitern -->
+        <q-route-tab to="/abenteuer" label="Abenteuer" />
+        <q-route-tab to="/kampf" label="Kampf" />
+        <q-route-tab to="/haendler" label="Händler" />
       </q-tabs>
     </q-header>
 
