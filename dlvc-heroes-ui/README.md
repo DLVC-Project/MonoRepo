@@ -1,3 +1,14 @@
+# One-Time Setup
+
+1. install node & npm
+   - <https://nodejs.org/en/download/> (or chocolate)
+   - ```npm install -g npm```
+2. Quasar in VS-Code:
+   - install recommended plugins: <https://quasar.dev/start/vs-code-configuration#vs-code-extensions>
+   - quasar CLI: ```npm i -g @quasar/cli```
+3. Additional vs Code plugins (optional):
+   - markdownlint, Conventional Commits
+
 # Ho_Valavor (dlvc-heroes-ui)
 
 DLVC UI based on quasar
