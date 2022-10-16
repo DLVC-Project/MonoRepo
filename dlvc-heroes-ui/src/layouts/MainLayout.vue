@@ -17,7 +17,7 @@
       <q-tabs
         class="bg-primary text-white shadow-2">
         <q-route-tab to="taverne" label="Taverne" icon="liquor" />
-        <q-route-tab to="kampf" label="Kampf" icon="f889" />
+        <q-route-tab to="kampf" label="Kampf" icon="sports_cricket" />
         <q-route-tab to="haendler" label="Händler" icon="storefront" />
       </q-tabs>
     </q-header>
@@ -32,6 +32,8 @@
           v-bind="link"
         />
       </q-list>
+
+      <SidebarItems></SidebarItems>
     </q-drawer>
 
     <q-page-container>
@@ -46,6 +48,7 @@ import { version } from '../../package.json';
 import EssentialLink, {
   EssentialLinkProps,
 } from 'components/EssentialLink.vue';
+import SidebarItems from 'components/SidebarItems.vue';
 
 const essentialLinks: EssentialLinkProps[] = [
   {
