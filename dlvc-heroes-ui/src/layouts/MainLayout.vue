@@ -17,7 +17,7 @@
       <q-tabs
         class="bg-primary text-white shadow-2">
         <q-route-tab to="taverne" label="Taverne" icon="liquor" />
-        <q-route-tab to="kampf" label="Kampf" icon="f889" />
+        <q-route-tab to="kampf" label="Kampf" icon="fa-solid fa-khanda" />
         <q-route-tab to="haendler" label="Händler" icon="storefront" />
       </q-tabs>
     </q-header>
