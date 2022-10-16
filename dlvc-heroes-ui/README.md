@@ -1,4 +1,8 @@
-# One-Time Setup
+# Ho_Valavor (dlvc-heroes-ui)
+
+DLVC UI based on quasar
+
+## One-Time Setup
 
 1. install node & npm
    - <https://nodejs.org/en/download/> (or chocolate)
@@ -8,10 +12,6 @@
    - quasar CLI: ```npm i -g @quasar/cli```
 3. Additional vs Code plugins (optional):
    - markdownlint, Conventional Commits
-
-# Ho_Valavor (dlvc-heroes-ui)
-
-DLVC UI based on quasar
 
 ## Install the dependencies
 
