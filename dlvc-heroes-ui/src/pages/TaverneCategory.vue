@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md">
     <div class="q-gutter-md" style="max-width: 300px">
-      <q-input outlined v-model="text" label="Name" />
+      <q-input outlined v-model="charName" label="Name" />
       <q-input
         outlined
         v-model.number="model"
@@ -16,11 +16,11 @@
         unmasked-value
         hint="Kreis: #    |    Level: ##"
       />
-      <q-input outlined v-model="text" label="Def/R" />
-      <q-input outlined v-model="text" label="Def/H" />
-      <q-input outlined v-model="text" label="Dmg 1" />
-      <q-input outlined v-model="text" label="Dmg 2" />
-      <q-input outlined v-model="text" label="Dmg 3" />
+      <q-input outlined v-model="defR" type="number" label="Def/R" />
+      <q-input outlined v-model="defH" type="number" label="Def/H" />
+      <q-input outlined v-model="dmg1" type="number" label="Dmg 1" />
+      <q-input outlined v-model="dmg2" type="number" label="Dmg 2" />
+      <q-input outlined v-model="dmg3" type="number" label="Dmg 3" />
     </div>
 
     <div>
@@ -28,7 +28,6 @@
         <q-input
           name="name"
           v-model="name"
-          :model-value="name"
           color="primary"
           label="Full name"
           filled
@@ -76,7 +75,13 @@ export default {
       name: ref('Jane Doe'),
       submitResult,
       text: ref(''),
+      charName: ref(""),
       level: ref(null),
+      defH: ref(),
+      defR: ref(0),
+      dmg1: ref(0),
+      dmg2: ref(0),
+      dmg3: ref(0),
 
       onSubmit(evt) {
         const formData = new FormData(evt.target);
