@@ -48,9 +48,31 @@
           <q-icon name="construction"/>
         </template>
       </q-input>
-    </q-form>
 
-    <div>
+      <div>
+        <q-btn label="Speichern" type="submit" color="primary" />
+      </div>
+
+    </q-form>
+    <q-card
+      v-if="submitResult.length > 0"
+      flat
+      bordered
+      class="q-mt-md bg-grey-2"
+    >
+      <q-separator />
+      <q-card-section class="row q-gutter-sm items-center">
+        <div
+          v-for="(item, index) in submitResult"
+          :key="index"
+          class="q-px-sm q-py-xs bg-grey-8 text-white rounded-borders text-center text-no-wrap"
+        >
+          {{ item.name }} = {{ item.value }}
+        </div>
+      </q-card-section>
+    </q-card>
+
+    <!-- <div>
       <q-form @submit="onSubmit" class="q-gutter-md">
         <q-input
           name="name"
@@ -87,7 +109,7 @@
           </div>
         </q-card-section>
       </q-card>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -114,10 +136,10 @@ export default {
         const formData = new FormData(evt.target);
         const data = [];
 
-        for (const [name, value] of formData.entries()) {
+        for (const [name, level] of formData.entries()) {
           data.push({
             name,
-            value,
+            level,
           });
         }
 
