@@ -48,6 +48,7 @@
           <q-icon name="construction"/>
         </template>
       </q-input>
+      <simple-number-input label="abc"/>
 
       <div>
         <q-btn label="Speichern" type="submit" color="primary" />
@@ -115,44 +116,35 @@
 
 <script>
 import { ref } from 'vue';
+import SimpleNumberInput from '../components/shared/SimpleNumberInput.vue';
 
 export default {
-  setup() {
-    const submitResult = ref([]);
-
-    return {
-      name: ref('Jane Doe'),
-      submitResult,
-      text: ref(''),
-      charName: ref(""),
-      level: ref(null),
-      defH: ref(),
-      defR: ref(),
-      dmg1: ref(),
-      dmg2: ref(),
-      dmg3: ref(),
-
-      onSubmit(evt) {
-        const formData = new FormData(evt.target);
-        const data = [];
-
-        for (const [name, level] of formData.entries()) {
-          data.push({
-            name,
-            level,
-          });
-        }
-
-        submitResult.value = data;
-      },
-    };
-  },
-
-  /*   setup() {
-    return {
-      text: ref(''),
-      level: ref(null),
-    };
-  }, */
+    setup() {
+        const submitResult = ref([]);
+        return {
+            name: ref("Jane Doe"),
+            submitResult,
+            text: ref(""),
+            charName: ref(""),
+            level: ref(null),
+            defH: ref(),
+            defR: ref(),
+            dmg1: ref(),
+            dmg2: ref(),
+            dmg3: ref(),
+            onSubmit(evt) {
+                const formData = new FormData(evt.target);
+                const data = [];
+                for (const [name, level] of formData.entries()) {
+                    data.push({
+                        name,
+                        level,
+                    });
+                }
+                submitResult.value = data;
+            },
+        };
+    },
+    components: { SimpleNumberInput }
 };
 </script>
