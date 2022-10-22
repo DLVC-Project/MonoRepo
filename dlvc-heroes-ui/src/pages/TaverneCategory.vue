@@ -1,27 +1,54 @@
 <template>
   <div class="q-pa-md">
-    <div class="q-gutter-md" style="max-width: 300px">
-      <q-input outlined v-model="charName" label="Name" />
-      <q-input
-        outlined
-        v-model.number="model"
-        type="number"
-        label="Kreis.Level"
-      />
-      <q-input
-        filled
-        v-model="level"
-        label="Erfahrung"
-        mask="Kreis: #    |    Level: ##"
-        unmasked-value
-        hint="Kreis: #    |    Level: ##"
-      />
-      <q-input outlined v-model="defR" type="number" label="Def/R" />
-      <q-input outlined v-model="defH" type="number" label="Def/H" />
-      <q-input outlined v-model="dmg1" type="number" label="Dmg 1" />
-      <q-input outlined v-model="dmg2" type="number" label="Dmg 2" />
-      <q-input outlined v-model="dmg3" type="number" label="Dmg 3" />
-    </div>
+    <q-form @submit="onSubmit" class="q-gutter-md" style="max-width: 300px">
+      <q-input outlined v-model="charName" label="Name" >
+        <template v-slot:append>
+          <q-icon name="emoji_people"/>
+        </template>
+      </q-input>
+      <div class="row justify-between">
+        <div class="col-5">
+          <q-input
+            outlined
+            v-model.number="model"
+            type="number"
+            label="Kreis"
+          />
+        </div>
+        <div class="col-6">
+          <q-input
+            outlined
+            v-model.number="model"
+            type="number"
+            label="Level"
+            >
+            <template v-slot:append>
+              <q-icon name="book"/>
+            </template>
+          </q-input>
+        </div>
+      </div>
+      <q-input outlined v-model="defR" type="number" label="Def/R" >
+        <template v-slot:append>
+          <q-icon name="shield"/>
+        </template>
+      </q-input>
+      <q-input outlined v-model="defH" type="number" label="Def/H" >
+        <template v-slot:append>
+          <q-icon name="sports_motorsports"/>
+        </template>
+      </q-input>
+      <q-input outlined v-model="dmg1" type="number" label="Schaden 1" >
+        <template v-slot:append>
+          <q-icon name="construction"/>
+        </template>
+      </q-input>
+      <q-input outlined v-model="dmg2" type="number" label="Schaden 2" >
+        <template v-slot:append>
+          <q-icon name="construction"/>
+        </template>
+      </q-input>
+    </q-form>
 
     <div>
       <q-form @submit="onSubmit" class="q-gutter-md">
@@ -78,10 +105,10 @@ export default {
       charName: ref(""),
       level: ref(null),
       defH: ref(),
-      defR: ref(0),
-      dmg1: ref(0),
-      dmg2: ref(0),
-      dmg3: ref(0),
+      defR: ref(),
+      dmg1: ref(),
+      dmg2: ref(),
+      dmg3: ref(),
 
       onSubmit(evt) {
         const formData = new FormData(evt.target);

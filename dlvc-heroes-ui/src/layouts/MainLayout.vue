@@ -17,7 +17,7 @@
       <q-tabs
         class="bg-primary text-white shadow-2">
         <q-route-tab to="taverne" label="Taverne" icon="liquor" />
-        <q-route-tab to="kampf" label="Kampf" icon="f889" />
+        <q-route-tab to="kampf" label="Kampf" icon="sports_cricket" />
         <q-route-tab to="haendler" label="Händler" icon="storefront" />
       </q-tabs>
     </q-header>
@@ -51,7 +51,7 @@ const essentialLinks: EssentialLinkProps[] = [
   {
     title: 'Spieler',
     caption: 'Erstellen | Bearbeiten',
-    icon: 'emoji_people',
+    icon: 'self_improvement',
     link: 'https://quasar.dev',
   },
   {
