@@ -4,7 +4,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class PlayerLoaderApplication
+open class PlayerLoaderApplication
 
 fun main(args: Array<String>) {
     runApplication<PlayerLoaderApplication>(*args)

@@ -48,7 +48,7 @@
           <q-icon name="construction"/>
         </template>
       </q-input>
-      <simple-number-input label="abc"/>
+      <simple-number-input v-model="shield" label="Schild"/>
 
       <div>
         <q-btn label="Speichern" type="submit" color="primary" />
@@ -132,6 +132,7 @@ export default {
             dmg1: ref(),
             dmg2: ref(),
             dmg3: ref(),
+            shield: ref(),
             onSubmit(evt) {
                 const formData = new FormData(evt.target);
                 const data = [];
