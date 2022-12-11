@@ -3,6 +3,7 @@ POST http://localhost:8080/hello
 Content-Type: application/json
 
 {
+  "id" : "new id",
   "text": "Hello!"
 }
 

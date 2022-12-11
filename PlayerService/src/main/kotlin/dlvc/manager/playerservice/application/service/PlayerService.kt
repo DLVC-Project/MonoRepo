@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 @Service
 class PlayerService(val playerRepository: PlayerRepository) {
 
-    fun findPlayer() : List<Player> = playerRepository.findAll()
+    fun getAllPlayers() : List<Player> = playerRepository.findAll()
 
     fun savePlayer(player: Player) = playerRepository.save(player)
 }
