@@ -69,8 +69,10 @@
 
 <script lang="ts">
 import { PlayerData } from 'src/Taverne/PlayerData';
-import { ref, defineComponent, reactive } from 'vue';
+import { defineComponent, reactive } from 'vue';
+import axios from 'axios'
 import SimpleNumberInput from '../components/shared/SimpleNumberInput.vue';
+import { url } from 'inspector';
 
 export default defineComponent({
   setup() {
@@ -87,6 +89,19 @@ export default defineComponent({
       console.log(playerData);
       // TODO
       // axios.post
+      axios.post('http://localhost:8080/hello', {
+        text: 'test'
+      }, {
+        headers: {
+          'content-type': 'application/json'
+        }
+    })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
       // angelegetes Objekt als Antwort in **pinia** speichern -> verbindet Componenten
     };
     return {
