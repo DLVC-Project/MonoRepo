@@ -4,23 +4,31 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.window.Window
-import androidx.compose.ui.window.WindowPosition
-import androidx.compose.ui.window.application
-import androidx.compose.ui.window.rememberWindowState
-import example.todoapp.lite.common.RootContent
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.window.*
+import example.todoapp.lite.common.RootContent2
 
 fun main() {
     application {
+        val icon = painterResource("images/Logo3_1.png")
+        if(isTraySupported) {
+            Tray(
+                icon = icon,
+                menu = {
+                    Item("Quit App", onClick = ::exitApplication)
+                }
+            )
+        }
         Window(
             onCloseRequest = ::exitApplication,
-            title = "TodoApp Lite",
+            title = "DLVC Desktop",
             state = rememberWindowState(
                 position = WindowPosition(alignment = Alignment.Center),
             ),
+            icon = icon
         ) {
             MaterialTheme {
-                RootContent(
+                RootContent2(
                     modifier = Modifier.fillMaxSize()
                 )
             }
