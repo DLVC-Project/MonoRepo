@@ -7,9 +7,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import example.todoapp.lite.common.RootStore.RootState
@@ -22,7 +20,7 @@ object Routes { // TODO: What are objects in Kotlin?
 @Composable
 fun RootContent2(modifier: Modifier = Modifier) {
     val routes = remember { mutableStateOf(Routes.Favorites) }
-
+    var text by remember { mutableStateOf("") }
     Scaffold(
         topBar = {
             TopAppBar(
@@ -59,7 +57,11 @@ fun RootContent2(modifier: Modifier = Modifier) {
             if(routes.value == Routes.Favorites) {
                 middleLayout(modifier, innerPadding)
             } else {
-                Text("Faces")
+                TextField(
+                    value = text,
+                    onValueChange = { changedText:String -> text = changedText },
+                    label = { Text("Name") }
+                )
             }
         }
     )
