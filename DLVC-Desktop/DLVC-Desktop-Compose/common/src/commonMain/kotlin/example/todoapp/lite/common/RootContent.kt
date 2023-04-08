@@ -12,9 +12,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import example.todoapp.lite.common.RootStore.RootState
 
-object Routes { // TODO: What are objects in Kotlin?
+import io.ktor.client.*
+import io.ktor.client.engine.cio.*
+import io.ktor.client.plugins.*
+import io.ktor.client.request.*
+import io.ktor.util.*
+import kotlinx.coroutines.runBlocking
+
+object Routes {
     const val Favorites = "Favorites"
     const val Faces = "Faces"
+    const val PostTest = "PostTest"
 }
 
 @Composable
@@ -32,7 +40,10 @@ fun RootContent2(modifier: Modifier = Modifier) {
                     IconButton(onClick = { routes.value = Routes.Faces }) {
                         Icon(Icons.Filled.Favorite, contentDescription = null)
                     }
-                    IconButton(onClick = { /* doSomething() */ }) {
+                    IconButton(onClick = {
+                        testPost()
+                        routes.value = Routes.PostTest
+                    }) {
                         Icon(Icons.Filled.Home, contentDescription = null)
                     }
                     IconButton(onClick = { /* doSomething() */ }) {
@@ -56,12 +67,16 @@ fun RootContent2(modifier: Modifier = Modifier) {
         content = { innerPadding ->
             if(routes.value == Routes.Favorites) {
                 middleLayout(modifier, innerPadding)
-            } else {
+            } else if (routes.value == Routes.Faces) {
                 TextField(
                     value = text,
                     onValueChange = { changedText:String -> text = changedText },
                     label = { Text("Name") }
                 )
+            } else if (routes.value == Routes.PostTest) {
+                Text("PostTest")
+            } else {
+                Text("Unknown route")
             }
         }
     )
@@ -123,6 +138,23 @@ fun RootContent(modifier: Modifier = Modifier) {
             onTextChanged = model::onEditorTextChanged,
             onDoneChanged = model::onEditorDoneChanged,
         )
+    }
+}
+
+@OptIn(InternalAPI::class)
+fun testPost() {
+    val client = HttpClient(CIO) {
+        install(HttpTimeout) {
+            requestTimeoutMillis = 5000
+        }
+    }
+
+    runBlocking {
+        val response = client.post("http://localhost:8080/hello") {
+            header("Content-Type", "application/json")
+            body = """{ "text": "Aber Hallo!" }"""
+        }
+        println(response)
     }
 }
 
